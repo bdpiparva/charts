@@ -54,7 +54,7 @@ server:
     nodeHttpsPort:
   ingress:
     # server.ingress.enabled is the toggle to enable GoCD Server Ingress
-    enabled: false
+    enabled: true
     # server.ingress.hosts is used to create an Ingress record.
 #    hosts:
 #      - foo.go.cd
@@ -76,7 +76,7 @@ server:
 
 agent:
   # agent.replicaCount is the GoCD Agent replicas Count. Specify the number of GoCD agents to run
-  replicaCount: 1
+  replicaCount: 0
   image:
     # agent.image.repository is the GoCD Agent image name
     repository: "gocd/gocd-agent-alpine-3.6"
