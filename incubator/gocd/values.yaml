@@ -7,9 +7,9 @@ server:
   enabled: true
   image:
     # server.image.repository is the GoCD Server image name
-    repository: "gocd/gocd-server"
+    repository: "bdpiprava/helm-gocd-server"
     # server.image.tag is the GoCD Server image's tag
-    tag:
+    tag: latest
     # server.image.pullPolicy is the GoCD Server image's pull policy
     pullPolicy: "IfNotPresent"
 
@@ -38,8 +38,6 @@ server:
     goServerSystemProperties:
     #  server.env.extraEnvVars is the list of environment variables passed to GoCD Server
     extraEnvVars:
-      - name: GOCD_PLUGIN_INSTALL_kubernetes-elastic-agents
-        value: https://github.com/gocd/kubernetes-elastic-agents/releases/download/v0.0.1/kubernetes-elastic-agent-0.0.1-0.jar
   service:
     # server.service.type is the GoCD Server service type
     type: "NodePort"
@@ -139,3 +137,9 @@ agent:
   ## Additional GoCD agent pod labels
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   nodeSelector: {}
+
+cluster:
+  url:
+  username:
+  password:
+  ca_cert :

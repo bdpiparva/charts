@@ -45,6 +45,20 @@ spec:
             {{- if .Values.server.env.extraEnvVars }}
 {{ toYaml .Values.server.env.extraEnvVars | indent 12 }}
             {{- end }}
+            - name: go_server_url
+            {{- if .Values.agent.env.goServerUrl }}
+              value: {{ .Values.agent.env.goServerUrl }}
+            {{- else }}
+              value: "https://{{ template "gocd.fullname" . }}-server:{{ .Values.server.service.httpsPort }}/go"
+            {{- end }}
+            - name: kubernetes_cluster_url
+              value: {{ .Values.cluster.url }}
+            - name: kubernetes_cluster_username
+              value: {{ .Values.cluster.username }}
+            - name: kubernetes_cluster_password
+              value: {{ .Values.cluster.password }}
+            - name: kubernetes_cluster_ca_cert
+              value: {{ .Values.cluster.ca_cert }}
           ports:
             - containerPort: 8153
             - containerPort: 8154
